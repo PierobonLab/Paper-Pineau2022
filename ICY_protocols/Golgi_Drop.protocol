@@ -1,0 +1,630 @@
+<protocol VERSION="4">
+<blocks>
+<workflow ID="2002684382" blockType="plugins.adufour.blocks.lang.FileBatch" className="plugins.adufour.blocks.lang.FileBatch" collapsed="false" definedName="File batch" height="709" keepsResults="true" width="1385" xLocation="20" yLocation="19">
+<blocks>
+<block ID="547566520" blockType="plugins.adufour.blocks.tools.io.FileToSequence" className="plugins.adufour.blocks.tools.io.FileToSequence" collapsed="true" definedName="File to sequence" height="108" keepsResults="true" width="190" xLocation="239" yLocation="0">
+<variables>
+<input>
+<variable ID="input file" name="input file" runtime="false" visible="true"/>
+<variable ID="Series" name="Series" runtime="false" value="0" visible="true"/>
+</input>
+<output>
+<variable ID="sequence" name="sequence" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="436238619" blockType="plugins.tprovoost.sequenceblocks.creation.DuplicateSequence" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="true" definedName="Duplicate sequence" height="83" keepsResults="true" width="245" xLocation="445" yLocation="0">
+<variables>
+<input>
+<variable ID="sequence" name="sequence" runtime="false" visible="true"/>
+</input>
+<output>
+<variable ID="duplicated" name="duplicated" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="310890763" blockType="plugins.tprovoost.sequenceblocks.remove.RemoveFrame" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Remove frame t0" height="86" keepsResults="true" width="246" xLocation="679" yLocation="0">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+<variable ID="frame" name="Frame" runtime="false" value="0" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="1037250813" blockType="plugins.tprovoost.sequenceblocks.infos.Dimensions" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Dimensions" height="171" keepsResults="true" width="246" xLocation="959" yLocation="14">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+</input>
+<output>
+<variable ID="width" name="Width" runtime="false" visible="true"/>
+<variable ID="height" name="Height" runtime="false" visible="true"/>
+<variable ID="size C" name="Size C" runtime="false" visible="true"/>
+<variable ID="size Z" name="Size Z" runtime="false" visible="true"/>
+<variable ID="size T" name="Size T" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="616039315" blockType="plugins.tprovoost.sequenceblocks.infos.SetResolution" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Set resolution" height="161" keepsResults="true" width="286" xLocation="20" yLocation="248">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+<variable ID="PxSize X (µm)" name="Pixel Size X (µm)" runtime="false" value="0.325" visible="true"/>
+<variable ID="PxSize Y (µm)" name="Pixel Size Y (µm)" runtime="false" value="0.325" visible="true"/>
+<variable ID="PxSize Z (µm)" name="Pixel Size Z (µm)" runtime="false" value="0.7" visible="true"/>
+<variable ID="Time interval T (s)" name="Time interval T (s)" runtime="false" value="30.0" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<workflow ID="1505731276" blockType="plugins.adufour.blocks.lang.RangeLoop" className="plugins.adufour.blocks.lang.RangeLoop" collapsed="false" definedName="Range loop" height="617" keepsResults="true" width="1321" xLocation="319" yLocation="161">
+<blocks>
+<block ID="1149736186" blockType="plugins.tprovoost.sequenceblocks.extract.ExtractTime" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Extract time" height="108" keepsResults="true" width="246" xLocation="17" yLocation="152">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+<variable ID="T pos" name="T" runtime="false" visible="true"/>
+</input>
+<output>
+<variable ID="extracted" name="Extracted" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="856232561" blockType="plugins.adufour.filtering.SelectionFilterBlock" className="plugins.adufour.filtering.SelectionFilterBlock" collapsed="false" definedName="Selection filter" height="180" keepsResults="true" width="246" xLocation="23" yLocation="296">
+<variables>
+<input>
+<variable ID="input sequence" name="input sequence" runtime="false" visible="true"/>
+<variable ID="filter" name="filter" runtime="false" value="plugins.adufour.filtering.Median" visible="true"/>
+<variable ID="filter radius (X)" name="filter radius (X)" runtime="false" value="1" visible="true"/>
+<variable ID="filter radius (Y)" name="filter radius (Y)" runtime="false" value="1" visible="true"/>
+<variable ID="filter radius (Z)" name="filter radius (Z)" runtime="false" value="1" visible="true"/>
+</input>
+<output>
+<variable ID="filtered sequence" name="filtered sequence" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="735352939" blockType="plugins.tprovoost.sequenceblocks.infos.SetResolution" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Set resolution" height="161" keepsResults="true" width="272" xLocation="9" yLocation="489">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+<variable ID="PxSize X (µm)" name="Pixel Size X (µm)" runtime="false" value="0.325" visible="true"/>
+<variable ID="PxSize Y (µm)" name="Pixel Size Y (µm)" runtime="false" value="0.325" visible="true"/>
+<variable ID="PxSize Z (µm)" name="Pixel Size Z (µm)" runtime="false" value="0.7" visible="true"/>
+<variable ID="Time interval T (s)" name="Time interval T (s)" runtime="false" value="30.0" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="1489240204" blockType="plugins.adufour.projection.Projection" className="plugins.adufour.projection.Projection" collapsed="false" definedName="Intensity Projection" height="151" keepsResults="true" width="275" xLocation="26" yLocation="664">
+<variables>
+<input>
+<variable ID="input" name="Input" runtime="false" visible="true"/>
+<variable ID="projection direction" name="Project along" runtime="false" value="Z" visible="true"/>
+<variable ID="projection type" name="Projection type" runtime="false" value="MAX" visible="true"/>
+<variable ID="restrict to ROI" name="Restrict to ROI" runtime="false" value="false" visible="true"/>
+</input>
+<output>
+<variable ID="projection output" name="projected sequence" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1968221350" blockType="plugins.tprovoost.bestthreshold.BestThreshold" className="plugins.tprovoost.bestthreshold.BestThreshold" collapsed="false" definedName="Best Threshold Ch 0" height="180" keepsResults="true" width="239" xLocation="299" yLocation="43">
+<variables>
+<input>
+<variable ID="Input" name="Input" runtime="false" visible="true"/>
+<variable ID="Method" name="Method" runtime="false" value="Li" visible="true"/>
+<variable ID="Channel" name="Channel" runtime="false" value="1" visible="true"/>
+<variable ID="Slice" name="Slice" runtime="false" value="0" visible="true"/>
+<variable ID="Time" name="Time" runtime="false" value="0" visible="true"/>
+</input>
+<output>
+<variable ID="result" name="result" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="236504262" blockType="plugins.adufour.thresholder.Thresholder" className="plugins.adufour.thresholder.Thresholder" collapsed="false" definedName="Thresholder Ch0" height="172" keepsResults="true" width="296" xLocation="574" yLocation="93">
+<variables>
+<input>
+<variable ID="Input" name="Input" runtime="false" visible="true"/>
+<variable ID="channel" name="channel" runtime="false" value="1" visible="true"/>
+<variable ID="Manual thresholds" name="Manual thresholds" runtime="false" visible="true"/>
+<variable ID="Treat as percentiles" name="Treat as percentiles" runtime="false" value="false" visible="true"/>
+</input>
+<output>
+<variable ID="output" name="Binary output" runtime="false" visible="true"/>
+<variable ID="ROI" name="ROI" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="2035313804" blockType="plugins.tprovoost.bestthreshold.BestThreshold" className="plugins.tprovoost.bestthreshold.BestThreshold" collapsed="false" definedName="Best Threshold Ch1" height="180" keepsResults="true" width="239" xLocation="381" yLocation="600">
+<variables>
+<input>
+<variable ID="Input" name="Input" runtime="false" visible="true"/>
+<variable ID="Method" name="Method" runtime="false" value="MaxEntropy" visible="true"/>
+<variable ID="Channel" name="Channel" runtime="false" value="0" visible="true"/>
+<variable ID="Slice" name="Slice" runtime="false" value="0" visible="true"/>
+<variable ID="Time" name="Time" runtime="false" value="0" visible="true"/>
+</input>
+<output>
+<variable ID="result" name="result" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1979581874" blockType="plugins.adufour.thresholder.Thresholder" className="plugins.adufour.thresholder.Thresholder" collapsed="false" definedName="Thresholder Ch1" height="179" keepsResults="true" width="296" xLocation="564" yLocation="286">
+<variables>
+<input>
+<variable ID="Input" name="Input" runtime="false" visible="true"/>
+<variable ID="channel" name="channel" runtime="false" value="0" visible="true"/>
+<variable ID="Manual thresholds" name="Manual thresholds" runtime="false" visible="true"/>
+<variable ID="Treat as percentiles" name="Treat as percentiles" runtime="false" value="false" visible="true"/>
+</input>
+<output>
+<variable ID="output" name="Binary output" runtime="false" visible="true"/>
+<variable ID="ROI" name="ROI" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1062052658" blockType="plugins.tprovoost.sequenceblocks.extract.ExtractChannel" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Extract channel" height="108" keepsResults="true" width="246" xLocation="932" yLocation="13">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+<variable ID="channel" name="Channel" runtime="false" visible="true"/>
+</input>
+<output>
+<variable ID="extracted" name="Extracted" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="263852333" blockType="plugins.adufour.blocks.tools.roi.ErodeROI" className="plugins.adufour.blocks.tools.roi.ErodeROI" collapsed="true" definedName="Erode ROI" height="180" keepsResults="true" width="180" xLocation="907" yLocation="147">
+<variables>
+<input>
+<variable ID="input ROI" name="List of ROI" runtime="false" visible="true"/>
+<variable ID="X radius" name="Along X" runtime="false" value="2" visible="true"/>
+<variable ID="Y radius" name="Along Y" runtime="false" value="2" visible="true"/>
+<variable ID="Z radius" name="Along Z" runtime="false" value="2" visible="true"/>
+<variable ID="unit" name="Unit" runtime="false" value="PIXELS" visible="true"/>
+</input>
+<output>
+<variable ID="output ROI" name="Eroded ROI" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1450044068" blockType="plugins.adufour.blocks.tools.roi.DilateROI" className="plugins.adufour.blocks.tools.roi.DilateROI" collapsed="true" definedName="Dilate ROI" height="180" keepsResults="true" width="180" xLocation="891" yLocation="224">
+<variables>
+<input>
+<variable ID="input ROI" name="List of ROI" runtime="false" visible="true"/>
+<variable ID="X radius" name="Along X" runtime="false" value="2" visible="true"/>
+<variable ID="Y radius" name="Along Y" runtime="false" value="2" visible="true"/>
+<variable ID="Z radius" name="Along Z" runtime="false" value="2" visible="true"/>
+<variable ID="unit" name="Unit" runtime="false" value="PIXELS" visible="true"/>
+</input>
+<output>
+<variable ID="output ROI" name="Dilated ROI" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1392511913" blockType="plugins.adufour.blocks.tools.roi.AddROIToSequence" className="plugins.adufour.blocks.tools.roi.AddROIToSequence" collapsed="false" definedName="Add ROI to sequence" height="107" keepsResults="true" width="251" xLocation="1084" yLocation="191">
+<variables>
+<input>
+<variable ID="target sequence" name="Source" runtime="false" visible="true"/>
+<variable ID="input rois" name="ROI to add" runtime="false" visible="true"/>
+<variable ID="replace existing" name="Overwrite" runtime="false" value="false" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="1377037905" blockType="plugins.adufour.distancetransforms.ROIToDistanceMap" className="plugins.adufour.distancetransforms.ROIToDistanceMap" collapsed="false" definedName="Distance Transforms" height="153" keepsResults="true" width="263" xLocation="1229" yLocation="14">
+<variables>
+<input>
+<variable ID="Use ROI from" name="Sequence" runtime="false" visible="true"/>
+<variable ID="Algorithm" name="Algorithm" runtime="false" value="plugins.adufour.distancetransforms.Chamfer3" visible="true"/>
+<variable ID="Invert map" name="Invert map" runtime="false" value="true" visible="true"/>
+<variable ID="Real units" name="Use pixel size" runtime="false" value="true" visible="true"/>
+</input>
+<output>
+<variable ID="Distance map" name="Distance map" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="56066252" blockType="plugins.adufour.blocks.tools.roi.ErodeROI" className="plugins.adufour.blocks.tools.roi.ErodeROI" collapsed="true" definedName="Erode ROI" height="180" keepsResults="true" width="180" xLocation="884" yLocation="430">
+<variables>
+<input>
+<variable ID="input ROI" name="List of ROI" runtime="false" visible="true"/>
+<variable ID="X radius" name="Along X" runtime="false" value="2" visible="true"/>
+<variable ID="Y radius" name="Along Y" runtime="false" value="2" visible="true"/>
+<variable ID="Z radius" name="Along Z" runtime="false" value="2" visible="true"/>
+<variable ID="unit" name="Unit" runtime="false" value="PIXELS" visible="true"/>
+</input>
+<output>
+<variable ID="output ROI" name="Eroded ROI" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="518445702" blockType="plugins.stef.roi.bloc.property.SetROIPositionC" className="plugins.stef.roi.bloc.RoiBlocks" collapsed="false" definedName="Set ROI position to Ch0" height="86" keepsResults="true" width="232" xLocation="881" yLocation="310">
+<variables>
+<input>
+<variable ID="rois" name="ROI(s)" runtime="false" visible="true"/>
+<variable ID="posC" name="position C" runtime="false" value="1.0" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="1264620022" blockType="plugins.adufour.blocks.tools.roi.AddROIToSequence" className="plugins.adufour.blocks.tools.roi.AddROIToSequence" collapsed="false" definedName="Add ROI to sequence" height="107" keepsResults="true" width="251" xLocation="1126" yLocation="321">
+<variables>
+<input>
+<variable ID="target sequence" name="Source" runtime="false" visible="true"/>
+<variable ID="input rois" name="ROI to add" runtime="false" visible="true"/>
+<variable ID="replace existing" name="Overwrite" runtime="false" value="false" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="441683201" blockType="plugins.adufour.roi.ROIMeasures" className="plugins.adufour.roi.ROIMeasures" collapsed="false" definedName="ROI Statistics" height="128" keepsResults="true" width="293" xLocation="1386" yLocation="286">
+<variables>
+<input>
+<variable ID="measures" name="Select features..." runtime="false" value="34124726496" visible="true"/>
+<variable ID="Regions of interest" name="Regions of interest" runtime="false" visible="true"/>
+<variable ID="Sequence" name="Sequence" runtime="false" visible="true"/>
+</input>
+<output>
+<variable ID="Workbook" name="Workbook" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="1039907891" blockType="plugins.tprovoost.sequenceblocks.infos.GetFileName" className="plugins.tprovoost.sequenceblocks.SequenceBlocks" collapsed="false" definedName="Get file name" height="131" keepsResults="true" width="246" xLocation="1034" yLocation="457">
+<variables>
+<input>
+<variable ID="sequence" name="Sequence" runtime="false" visible="true"/>
+<variable ID="folder" name="Folder" runtime="false" value="true" visible="true"/>
+<variable ID="extension" name="Extension" runtime="false" value="true" visible="true"/>
+</input>
+<output>
+<variable ID="name" name="Filename" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="682631924" blockType="plugins.adufour.blocks.tools.io.AppendFilePath" className="plugins.adufour.blocks.tools.io.AppendFilePath" collapsed="false" definedName="Append file path" height="132" keepsResults="true" width="382" xLocation="1352" yLocation="449">
+<variables>
+<input>
+<variable ID="input file" name="Current file" runtime="false" type="java.lang.String" visible="true"/>
+<variable ID="remove ext." name="Remove extension" runtime="false" value="true" visible="true"/>
+<variable ID="suffix" name="Add suffix" runtime="false" value="_CentroDropMedianMaxEntrLiErodeDil2.xsl" visible="true"/>
+</input>
+<output>
+<variable ID="output file" name="New file" runtime="false" visible="true"/>
+</output>
+</variables>
+</block>
+<block ID="6221773" blockType="plugins.adufour.blocks.tools.io.WorkbookToFile" className="plugins.adufour.blocks.tools.io.WorkbookToFile" collapsed="false" definedName="Workbook to file" height="353" keepsResults="true" width="498" xLocation="1738" yLocation="164">
+<variables>
+<input>
+<variable ID="workbook" name="workbook" runtime="false" visible="true"/>
+<variable ID="file format" name="file format" runtime="false" value="Spreadsheet" visible="true"/>
+<variable ID="output file" name="output file" runtime="false" visible="true"/>
+<variable ID="If file exists" name="If file exists" runtime="false" value="Merge_sheets___excluding_first_row" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="1660729637" blockType="plugins.adufour.blocks.tools.Display" className="plugins.adufour.blocks.tools.Display" collapsed="false" definedName="Display" height="140" keepsResults="true" width="144" xLocation="569" yLocation="496">
+<variables>
+<input>
+<variable ID="object" name="object" runtime="false" type="icy.sequence.Sequence" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="2107799094" blockType="plugins.adufour.blocks.tools.Display" className="plugins.adufour.blocks.tools.Display" collapsed="false" definedName="Display" height="114" keepsResults="true" width="144" xLocation="761" yLocation="482">
+<variables>
+<input>
+<variable ID="object" name="object" runtime="false" type="icy.sequence.Sequence" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="252411302" blockType="plugins.adufour.blocks.tools.Display" className="plugins.adufour.blocks.tools.Display" collapsed="false" definedName="Display" height="102" keepsResults="true" width="144" xLocation="1665" yLocation="38">
+<variables>
+<input>
+<variable ID="object" name="object" runtime="false" type="icy.sequence.Sequence" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+<block ID="985771690" blockType="plugins.adufour.blocks.tools.Display" className="plugins.adufour.blocks.tools.Display" collapsed="false" definedName="Display" height="144" keepsResults="true" width="144" xLocation="1531" yLocation="129">
+<variables>
+<input>
+<variable ID="object" name="object" runtime="false" type="icy.sequence.Sequence" visible="true"/>
+</input>
+<output/>
+</variables>
+</block>
+</blocks>
+<links>
+<link dstBlockID="1149736186" dstVarID="T pos" srcBlockID="1505731276" srcVarID="index"/>
+<link dstBlockID="856232561" dstVarID="input sequence" srcBlockID="1149736186" srcVarID="extracted"/>
+<link dstBlockID="735352939" dstVarID="sequence" srcBlockID="856232561" srcVarID="filtered sequence"/>
+<link dstBlockID="1489240204" dstVarID="input" srcBlockID="735352939" srcVarID="sequence"/>
+<link dstBlockID="236504262" dstVarID="Input" srcBlockID="735352939" srcVarID="sequence"/>
+<link dstBlockID="1979581874" dstVarID="Input" srcBlockID="735352939" srcVarID="sequence"/>
+<link dstBlockID="1968221350" dstVarID="Input" srcBlockID="1489240204" srcVarID="projection output"/>
+<link dstBlockID="2035313804" dstVarID="Input" srcBlockID="1489240204" srcVarID="projection output"/>
+<link dstBlockID="236504262" dstVarID="Manual thresholds" srcBlockID="1968221350" srcVarID="result"/>
+<link dstBlockID="1062052658" dstVarID="sequence" srcBlockID="236504262" srcVarID="Input"/>
+<link dstBlockID="1062052658" dstVarID="channel" srcBlockID="236504262" srcVarID="channel"/>
+<link dstBlockID="1660729637" dstVarID="object" srcBlockID="236504262" srcVarID="output"/>
+<link dstBlockID="263852333" dstVarID="input ROI" srcBlockID="236504262" srcVarID="ROI"/>
+<link dstBlockID="1979581874" dstVarID="Manual thresholds" srcBlockID="2035313804" srcVarID="result"/>
+<link dstBlockID="2107799094" dstVarID="object" srcBlockID="1979581874" srcVarID="output"/>
+<link dstBlockID="56066252" dstVarID="input ROI" srcBlockID="1979581874" srcVarID="ROI"/>
+<link dstBlockID="1392511913" dstVarID="target sequence" srcBlockID="1062052658" srcVarID="extracted"/>
+<link dstBlockID="985771690" dstVarID="object" srcBlockID="1062052658" srcVarID="extracted"/>
+<link dstBlockID="1450044068" dstVarID="input ROI" srcBlockID="263852333" srcVarID="output ROI"/>
+<link dstBlockID="1392511913" dstVarID="input rois" srcBlockID="1450044068" srcVarID="output ROI"/>
+<link dstBlockID="1377037905" dstVarID="Use ROI from" srcBlockID="1392511913" srcVarID="target sequence"/>
+<link dstBlockID="1264620022" dstVarID="target sequence" srcBlockID="1377037905" srcVarID="Distance map"/>
+<link dstBlockID="252411302" dstVarID="object" srcBlockID="1377037905" srcVarID="Distance map"/>
+<link dstBlockID="518445702" dstVarID="rois" srcBlockID="56066252" srcVarID="output ROI"/>
+<link dstBlockID="1264620022" dstVarID="input rois" srcBlockID="518445702" srcVarID="rois"/>
+<link dstBlockID="441683201" dstVarID="Sequence" srcBlockID="1264620022" srcVarID="target sequence"/>
+<link dstBlockID="441683201" dstVarID="Regions of interest" srcBlockID="1264620022" srcVarID="input rois"/>
+<link dstBlockID="6221773" dstVarID="workbook" srcBlockID="441683201" srcVarID="Workbook"/>
+<link dstBlockID="682631924" dstVarID="input file" srcBlockID="1039907891" srcVarID="name"/>
+<link dstBlockID="6221773" dstVarID="output file" srcBlockID="682631924" srcVarID="output file"/>
+</links>
+<variables>
+<input>
+<variable ID="start" blockID="1505731276" value="0" visible="true"/>
+<variable ID="step" blockID="1505731276" value="1" visible="true"/>
+<variable ID="end" blockID="1505731276" value="1" visible="true"/>
+<variable ID="1149736186:sequence" blockID="1149736186" value="No Sequence" visible="true"/>
+<variable ID="1149736186:T pos" blockID="1149736186" value="0" visible="false"/>
+<variable ID="856232561:input sequence" blockID="856232561" value="No Sequence" visible="false"/>
+<variable ID="856232561:filter" blockID="856232561" value="plugins.adufour.filtering.Median" visible="false"/>
+<variable ID="856232561:filter radius (X)" blockID="856232561" value="1" visible="false"/>
+<variable ID="856232561:filter radius (Y)" blockID="856232561" value="1" visible="false"/>
+<variable ID="856232561:filter radius (Z)" blockID="856232561" value="1" visible="false"/>
+<variable ID="735352939:sequence" blockID="735352939" value="No Sequence" visible="false"/>
+<variable ID="735352939:PxSize X (µm)" blockID="735352939" value="0.325" visible="false"/>
+<variable ID="735352939:PxSize Y (µm)" blockID="735352939" value="0.325" visible="false"/>
+<variable ID="735352939:PxSize Z (µm)" blockID="735352939" value="0.7" visible="false"/>
+<variable ID="735352939:Time interval T (s)" blockID="735352939" value="30.0" visible="false"/>
+<variable ID="1489240204:input" blockID="1489240204" value="No Sequence" visible="false"/>
+<variable ID="1489240204:projection direction" blockID="1489240204" value="Z" visible="false"/>
+<variable ID="1489240204:projection type" blockID="1489240204" value="MAX" visible="false"/>
+<variable ID="1489240204:restrict to ROI" blockID="1489240204" value="false" visible="false"/>
+<variable ID="1968221350:Input" blockID="1968221350" value="No Sequence" visible="false"/>
+<variable ID="1968221350:Method" blockID="1968221350" value="Li" visible="false"/>
+<variable ID="1968221350:Channel" blockID="1968221350" value="1" visible="false"/>
+<variable ID="1968221350:Slice" blockID="1968221350" value="0" visible="false"/>
+<variable ID="1968221350:Time" blockID="1968221350" value="0" visible="false"/>
+<variable ID="236504262:Input" blockID="236504262" value="No Sequence" visible="false"/>
+<variable ID="236504262:channel" blockID="236504262" value="1" visible="false"/>
+<variable ID="236504262:Manual thresholds" blockID="236504262" value="" visible="false"/>
+<variable ID="236504262:Treat as percentiles" blockID="236504262" value="false" visible="false"/>
+<variable ID="2035313804:Input" blockID="2035313804" value="No Sequence" visible="false"/>
+<variable ID="2035313804:Method" blockID="2035313804" value="MaxEntropy" visible="false"/>
+<variable ID="2035313804:Channel" blockID="2035313804" value="0" visible="false"/>
+<variable ID="2035313804:Slice" blockID="2035313804" value="0" visible="false"/>
+<variable ID="2035313804:Time" blockID="2035313804" value="0" visible="false"/>
+<variable ID="1979581874:Input" blockID="1979581874" value="No Sequence" visible="false"/>
+<variable ID="1979581874:channel" blockID="1979581874" value="0" visible="false"/>
+<variable ID="1979581874:Manual thresholds" blockID="1979581874" value="" visible="false"/>
+<variable ID="1979581874:Treat as percentiles" blockID="1979581874" value="false" visible="false"/>
+<variable ID="1062052658:sequence" blockID="1062052658" value="No Sequence" visible="false"/>
+<variable ID="1062052658:channel" blockID="1062052658" value="1" visible="false"/>
+<variable ID="263852333:input ROI" blockID="263852333" value="No ROI" visible="false"/>
+<variable ID="263852333:X radius" blockID="263852333" value="2" visible="false"/>
+<variable ID="263852333:Y radius" blockID="263852333" value="2" visible="false"/>
+<variable ID="263852333:Z radius" blockID="263852333" value="2" visible="false"/>
+<variable ID="263852333:unit" blockID="263852333" value="PIXELS" visible="false"/>
+<variable ID="1450044068:input ROI" blockID="1450044068" value="No ROI" visible="false"/>
+<variable ID="1450044068:X radius" blockID="1450044068" value="2" visible="false"/>
+<variable ID="1450044068:Y radius" blockID="1450044068" value="2" visible="false"/>
+<variable ID="1450044068:Z radius" blockID="1450044068" value="2" visible="false"/>
+<variable ID="1450044068:unit" blockID="1450044068" value="PIXELS" visible="false"/>
+<variable ID="1392511913:target sequence" blockID="1392511913" value="No Sequence" visible="false"/>
+<variable ID="1392511913:input rois" blockID="1392511913" value="No ROI" visible="false"/>
+<variable ID="1392511913:replace existing" blockID="1392511913" value="false" visible="false"/>
+<variable ID="1377037905:Use ROI from" blockID="1377037905" value="No Sequence" visible="false"/>
+<variable ID="1377037905:Algorithm" blockID="1377037905" value="plugins.adufour.distancetransforms.Chamfer3" visible="false"/>
+<variable ID="1377037905:Invert map" blockID="1377037905" value="true" visible="false"/>
+<variable ID="1377037905:Real units" blockID="1377037905" value="true" visible="false"/>
+<variable ID="56066252:input ROI" blockID="56066252" value="No ROI" visible="false"/>
+<variable ID="56066252:X radius" blockID="56066252" value="2" visible="false"/>
+<variable ID="56066252:Y radius" blockID="56066252" value="2" visible="false"/>
+<variable ID="56066252:Z radius" blockID="56066252" value="2" visible="false"/>
+<variable ID="56066252:unit" blockID="56066252" value="PIXELS" visible="false"/>
+<variable ID="518445702:rois" blockID="518445702" value="No ROI" visible="false"/>
+<variable ID="518445702:posC" blockID="518445702" value="1.0" visible="false"/>
+<variable ID="1264620022:target sequence" blockID="1264620022" value="No Sequence" visible="false"/>
+<variable ID="1264620022:input rois" blockID="1264620022" value="No ROI" visible="false"/>
+<variable ID="1264620022:replace existing" blockID="1264620022" value="false" visible="false"/>
+<variable ID="441683201:measures" blockID="441683201" value="34124726496" visible="false"/>
+<variable ID="441683201:Regions of interest" blockID="441683201" value="No ROI" visible="false"/>
+<variable ID="441683201:Sequence" blockID="441683201" value="No Sequence" visible="false"/>
+<variable ID="1039907891:sequence" blockID="1039907891" value="No Sequence" visible="true"/>
+<variable ID="1039907891:folder" blockID="1039907891" value="true" visible="false"/>
+<variable ID="1039907891:extension" blockID="1039907891" value="true" visible="false"/>
+<variable ID="682631924:input file" blockID="682631924" value="" visible="false"/>
+<variable ID="682631924:remove ext." blockID="682631924" value="true" visible="false"/>
+<variable ID="682631924:suffix" blockID="682631924" value="_CentroDropMedianMaxEntrLiErodeDil2.xsl" visible="false"/>
+<variable ID="6221773:workbook" blockID="6221773" value="" visible="false"/>
+<variable ID="6221773:file format" blockID="6221773" value="Spreadsheet" visible="false"/>
+<variable ID="6221773:output file" blockID="6221773" value="" visible="false"/>
+<variable ID="6221773:If file exists" blockID="6221773" value="Merge_sheets___excluding_first_row" visible="false"/>
+<variable ID="1660729637:object" blockID="1660729637" value="" visible="false"/>
+<variable ID="2107799094:object" blockID="2107799094" value="" visible="false"/>
+<variable ID="252411302:object" blockID="252411302" value="" visible="false"/>
+<variable ID="985771690:object" blockID="985771690" value="" visible="false"/>
+</input>
+<output>
+<variable ID="iteration" blockID="1505731276" visible="true"/>
+<variable ID="index" blockID="1505731276" visible="true"/>
+<variable ID="1149736186:extracted" blockID="1149736186" visible="false"/>
+<variable ID="856232561:filtered sequence" blockID="856232561" visible="false"/>
+<variable ID="1489240204:projection output" blockID="1489240204" visible="false"/>
+<variable ID="1968221350:result" blockID="1968221350" visible="false"/>
+<variable ID="236504262:output" blockID="236504262" visible="false"/>
+<variable ID="236504262:ROI" blockID="236504262" visible="false"/>
+<variable ID="2035313804:result" blockID="2035313804" visible="false"/>
+<variable ID="1979581874:output" blockID="1979581874" visible="false"/>
+<variable ID="1979581874:ROI" blockID="1979581874" visible="false"/>
+<variable ID="1062052658:extracted" blockID="1062052658" visible="false"/>
+<variable ID="263852333:output ROI" blockID="263852333" visible="false"/>
+<variable ID="1450044068:output ROI" blockID="1450044068" visible="false"/>
+<variable ID="1377037905:Distance map" blockID="1377037905" visible="false"/>
+<variable ID="56066252:output ROI" blockID="56066252" visible="false"/>
+<variable ID="441683201:Workbook" blockID="441683201" visible="false"/>
+<variable ID="1039907891:name" blockID="1039907891" visible="false"/>
+<variable ID="682631924:output file" blockID="682631924" visible="false"/>
+</output>
+</variables>
+</workflow>
+</blocks>
+<links>
+<link dstBlockID="547566520" dstVarID="input file" srcBlockID="2002684382" srcVarID="file"/>
+<link dstBlockID="436238619" dstVarID="sequence" srcBlockID="547566520" srcVarID="sequence"/>
+<link dstBlockID="1505731276" dstVarID="1039907891:sequence" srcBlockID="547566520" srcVarID="sequence"/>
+<link dstBlockID="310890763" dstVarID="sequence" srcBlockID="436238619" srcVarID="duplicated"/>
+<link dstBlockID="1037250813" dstVarID="sequence" srcBlockID="310890763" srcVarID="sequence"/>
+<link dstBlockID="1505731276" dstVarID="end" srcBlockID="1037250813" srcVarID="size T"/>
+<link dstBlockID="616039315" dstVarID="sequence" srcBlockID="1037250813" srcVarID="sequence"/>
+<link dstBlockID="1505731276" dstVarID="1149736186:sequence" srcBlockID="616039315" srcVarID="sequence"/>
+</links>
+<variables>
+<input>
+<variable ID="folder" blockID="2002684382" value="E:\Spinning4_Crops_Analyse_JudithDrop\SirTub_DMSO_Blebb_MLSA1_Y27\20201013\Y27" visible="true"/>
+<variable ID="extension" blockID="2002684382" value=".tif" visible="true"/>
+<variable ID="Include sub-folders" blockID="2002684382" value="false" visible="true"/>
+<variable ID="547566520:input file" blockID="547566520" value="" visible="false"/>
+<variable ID="547566520:Series" blockID="547566520" value="0" visible="false"/>
+<variable ID="436238619:sequence" blockID="436238619" value="No Sequence" visible="false"/>
+<variable ID="310890763:sequence" blockID="310890763" value="No Sequence" visible="false"/>
+<variable ID="310890763:frame" blockID="310890763" value="0" visible="false"/>
+<variable ID="1037250813:sequence" blockID="1037250813" value="No Sequence" visible="false"/>
+<variable ID="616039315:sequence" blockID="616039315" value="No Sequence" visible="false"/>
+<variable ID="616039315:PxSize X (µm)" blockID="616039315" value="0.325" visible="false"/>
+<variable ID="616039315:PxSize Y (µm)" blockID="616039315" value="0.325" visible="false"/>
+<variable ID="616039315:PxSize Z (µm)" blockID="616039315" value="0.7" visible="false"/>
+<variable ID="616039315:Time interval T (s)" blockID="616039315" value="30.0" visible="false"/>
+<variable ID="1505731276:start" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:step" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:end" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:1149736186:sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1149736186:T pos" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:856232561:input sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:856232561:filter" blockID="1505731276" value="plugins.adufour.filtering.Median" visible="false"/>
+<variable ID="1505731276:856232561:filter radius (X)" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:856232561:filter radius (Y)" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:856232561:filter radius (Z)" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:735352939:sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:735352939:PxSize X (µm)" blockID="1505731276" value="0.325" visible="false"/>
+<variable ID="1505731276:735352939:PxSize Y (µm)" blockID="1505731276" value="0.325" visible="false"/>
+<variable ID="1505731276:735352939:PxSize Z (µm)" blockID="1505731276" value="0.7" visible="false"/>
+<variable ID="1505731276:735352939:Time interval T (s)" blockID="1505731276" value="30.0" visible="false"/>
+<variable ID="1505731276:1489240204:input" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1489240204:projection direction" blockID="1505731276" value="Z" visible="false"/>
+<variable ID="1505731276:1489240204:projection type" blockID="1505731276" value="MAX" visible="false"/>
+<variable ID="1505731276:1489240204:restrict to ROI" blockID="1505731276" value="false" visible="false"/>
+<variable ID="1505731276:1968221350:Input" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1968221350:Method" blockID="1505731276" value="Li" visible="false"/>
+<variable ID="1505731276:1968221350:Channel" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:1968221350:Slice" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:1968221350:Time" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:236504262:Input" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:236504262:channel" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:236504262:Manual thresholds" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:236504262:Treat as percentiles" blockID="1505731276" value="false" visible="false"/>
+<variable ID="1505731276:2035313804:Input" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:2035313804:Method" blockID="1505731276" value="MaxEntropy" visible="false"/>
+<variable ID="1505731276:2035313804:Channel" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:2035313804:Slice" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:2035313804:Time" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:1979581874:Input" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1979581874:channel" blockID="1505731276" value="0" visible="false"/>
+<variable ID="1505731276:1979581874:Manual thresholds" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:1979581874:Treat as percentiles" blockID="1505731276" value="false" visible="false"/>
+<variable ID="1505731276:1062052658:sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1062052658:channel" blockID="1505731276" value="1" visible="false"/>
+<variable ID="1505731276:263852333:input ROI" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:263852333:X radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:263852333:Y radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:263852333:Z radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:263852333:unit" blockID="1505731276" value="PIXELS" visible="false"/>
+<variable ID="1505731276:1450044068:input ROI" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:1450044068:X radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:1450044068:Y radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:1450044068:Z radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:1450044068:unit" blockID="1505731276" value="PIXELS" visible="false"/>
+<variable ID="1505731276:1392511913:target sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1392511913:input rois" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:1392511913:replace existing" blockID="1505731276" value="false" visible="false"/>
+<variable ID="1505731276:1377037905:Use ROI from" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1377037905:Algorithm" blockID="1505731276" value="plugins.adufour.distancetransforms.Chamfer3" visible="false"/>
+<variable ID="1505731276:1377037905:Invert map" blockID="1505731276" value="true" visible="false"/>
+<variable ID="1505731276:1377037905:Real units" blockID="1505731276" value="true" visible="false"/>
+<variable ID="1505731276:56066252:input ROI" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:56066252:X radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:56066252:Y radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:56066252:Z radius" blockID="1505731276" value="2" visible="false"/>
+<variable ID="1505731276:56066252:unit" blockID="1505731276" value="PIXELS" visible="false"/>
+<variable ID="1505731276:518445702:rois" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:518445702:posC" blockID="1505731276" value="1.0" visible="false"/>
+<variable ID="1505731276:1264620022:target sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1264620022:input rois" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:1264620022:replace existing" blockID="1505731276" value="false" visible="false"/>
+<variable ID="1505731276:441683201:measures" blockID="1505731276" value="34124726496" visible="false"/>
+<variable ID="1505731276:441683201:Regions of interest" blockID="1505731276" value="No ROI" visible="false"/>
+<variable ID="1505731276:441683201:Sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1039907891:sequence" blockID="1505731276" value="No Sequence" visible="false"/>
+<variable ID="1505731276:1039907891:folder" blockID="1505731276" value="true" visible="false"/>
+<variable ID="1505731276:1039907891:extension" blockID="1505731276" value="true" visible="false"/>
+<variable ID="1505731276:682631924:input file" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:682631924:remove ext." blockID="1505731276" value="true" visible="false"/>
+<variable ID="1505731276:682631924:suffix" blockID="1505731276" value="_CentroDropMedianMaxEntrLiErodeDil2.xsl" visible="false"/>
+<variable ID="1505731276:6221773:workbook" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:6221773:file format" blockID="1505731276" value="Spreadsheet" visible="false"/>
+<variable ID="1505731276:6221773:output file" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:6221773:If file exists" blockID="1505731276" value="Merge_sheets___excluding_first_row" visible="false"/>
+<variable ID="1505731276:1660729637:object" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:2107799094:object" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:252411302:object" blockID="1505731276" value="" visible="false"/>
+<variable ID="1505731276:985771690:object" blockID="1505731276" value="" visible="false"/>
+</input>
+<output>
+<variable ID="iteration" blockID="2002684382" visible="true"/>
+<variable ID="file" blockID="2002684382" visible="true"/>
+<variable ID="547566520:sequence" blockID="547566520" visible="false"/>
+<variable ID="436238619:duplicated" blockID="436238619" visible="false"/>
+<variable ID="1037250813:width" blockID="1037250813" visible="false"/>
+<variable ID="1037250813:height" blockID="1037250813" visible="false"/>
+<variable ID="1037250813:size C" blockID="1037250813" visible="false"/>
+<variable ID="1037250813:size Z" blockID="1037250813" visible="false"/>
+<variable ID="1037250813:size T" blockID="1037250813" visible="false"/>
+<variable ID="1505731276:iteration" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:index" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1149736186:extracted" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:856232561:filtered sequence" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1489240204:projection output" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1968221350:result" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:236504262:output" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:236504262:ROI" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:2035313804:result" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1979581874:output" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1979581874:ROI" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1062052658:extracted" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:263852333:output ROI" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1450044068:output ROI" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1377037905:Distance map" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:56066252:output ROI" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:441683201:Workbook" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:1039907891:name" blockID="1505731276" visible="false"/>
+<variable ID="1505731276:682631924:output file" blockID="1505731276" visible="false"/>
+</output>
+</variables>
+</workflow>
+</blocks>
+<links/>
+</protocol>
