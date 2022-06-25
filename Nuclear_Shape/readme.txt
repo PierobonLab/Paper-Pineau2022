@@ -21,6 +21,7 @@ System requirements:
 Matlab 2016b or older
 Image Processing Toolbox
 Statistics and Machine Learning Toolbox
+The necessary functions of the matGeom and matImage are included in the folder (under appropriate license).
 
 Install and configure:
 Unzip the dowloaded directory and add all subdirectories to the path either manually or by going to the Nuclear_Shape folder and typing:
